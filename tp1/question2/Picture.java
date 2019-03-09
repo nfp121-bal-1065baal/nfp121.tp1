@@ -25,6 +25,7 @@ public class Picture {
     private Circle sun;
     private Circle Soleiljaune;
     static int distanceMoved;
+	private boolean terreFixe=false;
 
     /**
      * Constructor for objects of class Picture
@@ -67,6 +68,8 @@ public class Picture {
         Soleiljaune.moveVertical(-10);
         Soleiljaune.changeSize(60);
         Soleiljaune.makeVisible();
+		
+		terreFixe=true;
     }
 
     /**
@@ -101,22 +104,23 @@ public class Picture {
     
     public void coucher()
     
-    {     
-        distanceMoved=200;
-        Timer timer = new Timer (50, new ActionListener() { 
-            
-            public void actionPerformed(ActionEvent e) {
-                if (distanceMoved==0) {
-                    ((Timer)e.getSource()).stop();
-                }
-                sun.moveVertical(1);
-                distanceMoved--;
-            }
-        });
-        timer.setRepeats(true);
-        timer.setCoalesce(true);
-        timer.setInitialDelay(0);
-        timer.start();
+    {     if(terreFixe){
+			distanceMoved=200;
+			Timer timer = new Timer (50, new ActionListener() { 
+				
+				public void actionPerformed(ActionEvent e) {
+					if (distanceMoved==0) {
+						((Timer)e.getSource()).stop();
+					}
+					sun.moveVertical(1);
+					distanceMoved--;
+				}
+			});
+			timer.setRepeats(true);
+			timer.setCoalesce(true);
+			timer.setInitialDelay(0);
+			timer.start();
+		}
     }
 }
 
