@@ -112,7 +112,7 @@ public class Circle {
     /**
      * Slowly move the circle vertically by 'distance' pixels.
      */
-    public void slowMoveVertical(int distance) {
+   public void slowMoveVertical(int distance) {
         int delta;
 
         if (distance < 0) {
@@ -126,7 +126,15 @@ public class Circle {
             yPosition += delta;
             draw();
         }
+        
+
+
+
+    
+  
     }
+    
+    
 
     /**
      * Change the size to the new size (in pixels). Size must be >= 0.

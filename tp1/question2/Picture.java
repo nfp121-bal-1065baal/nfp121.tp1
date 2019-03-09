@@ -3,6 +3,9 @@ package question2;
 import question1.Circle;
 import question1.Square;
 import question1.Triangle;
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * This class represents a simple picture. You can draw the picture using the
@@ -20,6 +23,8 @@ public class Picture {
     private Square window;
     private Triangle roof;
     private Circle sun;
+    private Circle Soleiljaune;
+    static int distanceMoved;
 
     /**
      * Constructor for objects of class Picture
@@ -50,11 +55,18 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        sun.changeColor("yellow");
+        sun.changeColor("blue");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        
+        Soleiljaune = new Circle();
+        Soleiljaune.changeColor("yellow");
+        Soleiljaune.moveHorizontal(180);
+        Soleiljaune.moveVertical(-10);
+        Soleiljaune.changeSize(60);
+        Soleiljaune.makeVisible();
     }
 
     /**
@@ -70,6 +82,9 @@ public class Picture {
         }
     }
 
+    
+    
+    
     /**
      * Change this picture to use color display
      */
@@ -83,4 +98,28 @@ public class Picture {
         }
     }
 
+    
+    public void coucher()
+    
+    {     
+        distanceMoved=200;
+        Timer timer = new Timer (50, new ActionListener() { 
+            
+            public void actionPerformed(ActionEvent e) {
+                if (distanceMoved==0) {
+                    ((Timer)e.getSource()).stop();
+                }
+                sun.moveVertical(1);
+                distanceMoved--;
+            }
+        });
+        timer.setRepeats(true);
+        timer.setCoalesce(true);
+        timer.setInitialDelay(0);
+        timer.start();
+    }
 }
+
+    
+    
+    
