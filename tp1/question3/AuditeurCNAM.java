@@ -1,5 +1,7 @@
 package question3;
 
+import java.text.Normalizer;
+
 /**
  * NFP121 TpIntroduction, usage de BlueJ et du "Submitter".
  * 
@@ -54,7 +56,9 @@ public class AuditeurCNAM {
         out +="_";
         out +=prenom.charAt(0);
         out = out.toLowerCase();
-        out.replaceAll("é","e");
+        out = Normalizer.normalize(out,Normalizer.Form.NFD);
+        
+        out=out.replaceAll("\\p{M}","");
         out = out.replaceAll("[^a-z]","_");
         
         
